@@ -60,6 +60,10 @@ display_help() {
   Commands:
 
     g               Output local branches installed
+    j               Down
+    k               Up
+    space/enter     Select branch
+    q|esc           Abort/quit
 
   Options:
 
@@ -106,11 +110,11 @@ display_local_branches_with_selected() {
 }
 
 display_remote_branches_with_selected() {
-  selected=$1  
+  selected=$1
   local i=0
   echo
   for version in $remote_branches; do
-    [ -z "${selected}" ] && selected=$version    
+    [ -z "${selected}" ] && selected=$version
     if [ "$version" = "$selected" ]; then
       printf "  \033[36mο\033[0m $version\033[0m\n"
     else
@@ -203,20 +207,20 @@ display_local_branches() {
   while true; do
     read_key
     case "$key" in
-      w|W|UP)
+      k|K|UP)
         refresh_fullscreen
         display_local_branches_with_selected $(prev_local_branch)
       ;;
-      s|S|DOWN)
+      j|J|DOWN)
         refresh_fullscreen
         display_local_branches_with_selected $(next_local_branch)
       ;;
-      d|D|RIGHT|ENTER_OR_SPACE)
+      ENTER_OR_SPACE)
         leave_fullscreen
         activate $selected
         exit
       ;;
-      a|A|q|Q|LEFT|ESC)
+      q|Q|ESC)
         leave_fullscreen
         exit
       ;;
@@ -231,20 +235,20 @@ display_remote_branches() {
   while true; do
     read_key
     case "$key" in
-      w|W|UP)
+      k|K|UP)
         refresh_fullscreen
         display_remote_branches_with_selected $(prev_remote_branch)
       ;;
-      s|S|DOWN)
+      j|J|DOWN)
         refresh_fullscreen
         display_remote_branches_with_selected $(next_remote_branch)
       ;;
-      d|D|RIGHT|ENTER_OR_SPACE)
+      ENTER_OR_SPACE)
         leave_fullscreen
         create_from_remote $selected
         exit
       ;;
-      a|A|q|Q|LEFT|ESC)
+      q|Q|ESC)
         leave_fullscreen
         exit
       ;;
