@@ -9,7 +9,8 @@ Inspired by TJ's [n](https://github.com/tj/n).
 ## Installation
 
 ### Linux
-
+    To install the original g-cli by https://github.com/sameoldmadness
+    
     $ npm install -g g-cli
 
 or
