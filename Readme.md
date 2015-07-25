@@ -26,7 +26,7 @@ Copy `g.bat` to `C:\Windows\System32` or any other directory within `PATH` varia
 
 ### Switching branches
 
-Type `g` to prompt selection of a local git branch. Use the `W` to go up, `A` to go down, `S` to select and `D` to cancel:
+Type `g` to prompt selection of a local git branch. Use the `k` to go up, `j` to go down, `space/enter` to select and `q/esc` to cancel:
 
     $ g
 
@@ -43,7 +43,11 @@ On Linux you can also use arrow keys, `space` or `enter` to submit, `escape` or 
 
     Commands:
   
-      g               Output local branches installed
+    g               Output local branches installed
+    j               Down
+    k               Up
+    space/enter     Select branch
+    q|esc           Abort/quit
   
     Options:
   
